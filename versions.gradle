@@ -1,9 +1,9 @@
 ext {
 
     // App
-    compileSdkVersion = 28
+    compileSdkVersion = 29
     minSdkVersion = 21
-    targetSdkVersion = 28
+    targetSdkVersion = 29
     appVersionCode = 1
     appVersionName = "1.0"
 
@@ -40,5 +40,5 @@ ext {
     // Architecture components
     roomVersion = "2.1.0-rc01"
     archCoreVersion = "2.0.0"
-    lifecycleVersion = "2.0.0"
+    lifecycleVersion = "2.2.0"
 }
