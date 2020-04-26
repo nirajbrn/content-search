@@ -1,0 +1,3 @@
+rootProject.name='ContentSearch'
+include ':app'
+include ':domain'
