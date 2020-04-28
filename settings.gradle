@@ -1,5 +1,6 @@
 rootProject.name='ContentSearch'
+include ':remote'
+include ':presentation'
 include ':app'
 include ':domain'
-include ':presentation'
 include ':data'
