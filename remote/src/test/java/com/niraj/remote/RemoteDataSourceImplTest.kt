@@ -52,4 +52,21 @@ class RemoteDataSourceImplTest {
             }
     }
 
+    @Test
+    fun test_getMovieList_error() {
+        val movieName = "Jungle"
+        val apiKey = "c4c6ccd7"
+        val errorMessage = "Error"
+
+        Mockito.`when`(searchService.getSearchMovieData(movieName, apiKey))
+            .thenReturn(Observable.error(Throwable(errorMessage)))
+
+        remoteDataSource.getSearchData(movieName, 1)
+            .test()
+            .assertSubscribed()
+            .assertError {
+                it.message == errorMessage
+            }
+    }
+
 }

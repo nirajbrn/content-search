@@ -5,5 +5,5 @@ import io.reactivex.Observable
 
 interface LocalDataSource {
     fun getSearchData(movieName: String, pageNumber: Int): Observable<List<MovieData>>
-    fun saveMovieResult(movieName: String, movieData: List<MovieData>)
+    fun saveMovieResult(movieName: String, moviesData: List<MovieData>)
 }
