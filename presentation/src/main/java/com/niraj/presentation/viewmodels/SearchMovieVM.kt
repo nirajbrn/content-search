@@ -26,7 +26,6 @@ class SearchMovieVM @Inject internal constructor(
     fun searchMovies(movieName: String, pageNumber: Int): LiveData<Resource<List<Movie>>> {
         return searchMovieTask.buildUseCase(searchRequest(movieName, pageNumber))
             .map { movieEntities ->
-                Log.d("#niraj", "movies: $movieEntities")
                 movieEntities.map {
                     searchMapper.to(it)
                 }

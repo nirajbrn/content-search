@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ContentSearch</string>
+    <string name="error_message">No result found</string>
 </resources>

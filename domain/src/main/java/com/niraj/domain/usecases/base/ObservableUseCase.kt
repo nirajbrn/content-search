@@ -15,4 +15,8 @@ abstract class ObservableUseCase<T, in Input> constructor(
             .observeOn(foregroundScheduler)
     }
 
+    fun cancel() {
+
+    }
+
 }

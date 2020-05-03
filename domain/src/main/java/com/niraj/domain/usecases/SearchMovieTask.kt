@@ -21,7 +21,6 @@ class SearchMovieTask @Inject constructor(
 
     override fun generateObservable(input: Params?): Observable<List<MovieEntity>> {
         if (input == null) throw IllegalArgumentException("Search params can't be null")
-        print("SearchMovieTask $input")
         return searchMovieRepository.getMovieSearch(
             identifier = input.searchIdentifier,
             pageNumber = input.pageNumber
