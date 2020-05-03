@@ -12,6 +12,7 @@ class LocalDataSourceImpl @Inject constructor(
     private val movieDAO: MovieDAO
 ) : LocalDataSource {
     override fun getSearchData(movieName: String, pageNumber: Int): Observable<List<MovieData>> {
+        print("#niraj Local keyword ${movieName}")
         return movieDAO.getMovieDetails(movieName).map { moviesLocal ->
             moviesLocal.map { movieLocal ->
                 movieDataLocalMapper.from(movieLocal)

@@ -17,6 +17,7 @@ class SearchMovieVM @Inject internal constructor(
     private val searchMapper: SearchEntityMapper,
     private val searchMovieTask: SearchMovieTask
 ) : ViewModel() {
+    val TAG = "SearchMovieVM"
 
     private fun searchRequest(movieName: String, pageNumber: Int) =
         SearchMovieTask.Params(
@@ -26,6 +27,7 @@ class SearchMovieVM @Inject internal constructor(
     fun searchMovies(movieName: String, pageNumber: Int): LiveData<Resource<List<Movie>>> {
         return searchMovieTask.buildUseCase(searchRequest(movieName, pageNumber))
             .map { movieEntities ->
+                Log.d(TAG, "#niraj key: $movieName")
                 movieEntities.map {
                     searchMapper.to(it)
                 }

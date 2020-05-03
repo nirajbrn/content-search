@@ -3,6 +3,7 @@ package com.niraj.contentsearch
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -58,7 +59,31 @@ class HomeActivity : AppCompatActivity() {
         )
     }
 
-    fun searchKeyword(keyword: String) {
+    override fun onResume() {
+        super.onResume()
+        shimmerFrameLayout.startShimmerAnimation()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        shimmerFrameLayout.stopShimmerAnimation()
+    }
+
+    private fun startShimmerAnimation() {
+        shimmerFrameLayout.startShimmerAnimation()
+        shimmerFrameLayout.visibility = View.VISIBLE
+        movieRv.visibility = View.GONE
+    }
+
+    private fun stopShimmerAnimation() {
+        shimmerFrameLayout.stopShimmerAnimation()
+        shimmerFrameLayout.visibility = View.GONE
+        movieRv.visibility = View.VISIBLE
+    }
+
+    private fun searchKeyword(keyword: String) {
+        Log.d(TAG, "#niraj searchKeyword key: $keyword")
+        startShimmerAnimation()
         searchMovieVM.searchMovies(keyword, 1)
             .observe(this, Observer { resource ->
                 when (resource.status) {
@@ -67,10 +92,12 @@ class HomeActivity : AppCompatActivity() {
                     }
                     Status.ERROR -> {
                         Log.d(TAG, "Error: ${resource.message}")
+                        shimmerFrameLayout.visibility = View.GONE
                     }
                     Status.SUCCESS -> {
+                        stopShimmerAnimation()
                         resource.data?.let { movies ->
-                            Log.d(TAG, "response: ${movies.size}")
+                            Log.d(TAG, "#niraj key: $keyword response: ${movies.size}")
                             if (movies.isEmpty()) {
                                 Toast.makeText(this, R.string.error_message, Toast.LENGTH_SHORT)
                                     .show()

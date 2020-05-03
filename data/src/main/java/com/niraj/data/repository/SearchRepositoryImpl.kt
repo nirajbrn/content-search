@@ -17,10 +17,12 @@ class SearchRepositoryImpl @Inject constructor(
         identifier: String,
         pageNumber: Int
     ): Observable<List<MovieEntity>> {
+        println("#niraj data keyword: $identifier")
         val searchMovieObservable = localDataSource.getSearchData(identifier, pageNumber)
             .map { movies -> movies.map {  searchMovieMapper.from(it) } }
         return remoteDataSource.getSearchData(identifier,pageNumber)
             .map {movies ->
+                println("#niraj data keyword: response $identifier")
                 localDataSource.saveMovieResult(identifier, movies)
                 movies.map { searchMovieMapper.from(it) }
             }.onErrorResumeNext(Observable.empty())

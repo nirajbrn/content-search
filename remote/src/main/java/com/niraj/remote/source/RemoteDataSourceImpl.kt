@@ -16,6 +16,7 @@ class RemoteDataSourceImpl @Inject constructor(
     override fun getSearchData(movieName: String, pageNumber: Int): Observable<List<MovieData>> {
         return searchService.getSearchMovieData(movieName)
             .map { response ->
+                print("#niraj Remote keyword ${movieName}")
                 response.movies.map { moviesNetwork: MoviesNetwork ->
                     movieDataMapper.from(
                         moviesNetwork
