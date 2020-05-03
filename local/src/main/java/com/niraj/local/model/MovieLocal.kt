@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "MovieDetail")
+@Entity(tableName = "movie_details")
 data class MovieLocal(
     @PrimaryKey @ColumnInfo(name = "search_key") val keyword: String,
     @ColumnInfo(name = "movie_title") val title: String,

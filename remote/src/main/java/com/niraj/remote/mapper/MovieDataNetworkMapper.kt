@@ -2,9 +2,10 @@ package com.niraj.remote.mapper
 
 import com.niraj.data.model.MovieData
 import com.niraj.remote.model.MoviesNetwork
+import javax.inject.Inject
 
 
-class MovieDataNetworkMapper : Mapper<MovieData, MoviesNetwork> {
+class MovieDataNetworkMapper @Inject constructor() : Mapper<MovieData, MoviesNetwork> {
     override fun from(e: MoviesNetwork): MovieData {
         return MovieData(
             title = e.title,

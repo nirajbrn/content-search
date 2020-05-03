@@ -3,9 +3,9 @@ package com.niraj.remote.model
 import com.google.gson.annotations.SerializedName
 
 data class MoviesNetwork(
-    @SerializedName("title") val title: String,
-    @SerializedName("year") val year: String,
-    @SerializedName("imdbId") val imdbId: String,
-    @SerializedName("type") val type: String,
-    @SerializedName("posterUrl") val posterUrl: String
+    @SerializedName("Title") val title: String,
+    @SerializedName("Year") val year: String,
+    @SerializedName("imdbID") val imdbId: String,
+    @SerializedName("Type") val type: String,
+    @SerializedName("Poster") val posterUrl: String
 )
